@@ -4,6 +4,6 @@ This is a lightweight but efficient line calculator that calculates lines of `C`
 
 ## Installing
 
-Download it from GitHub. Then move it to the directory that you want to calculate lines. At last type the command to get surprise.
+Clone this repo. Then type `make install`. At last type the command in your project directory to get surprise.
 
-> ./lines
+> lines .

@@ -1,4 +1,5 @@
 #!/bin/sh
+#
 # lines: A lightweight but useful line calculator.
 #   Copyright (C) 2017  Travor Liu
 #
@@ -15,13 +16,29 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-C_LINES=`(find . -name '*.c' -print0 | xargs -0 cat ) | wc -l`
-ASM_LINES=`(find . -name '*.asm' -print0 | xargs -0 cat) | wc -l`
-GAS_LINES=$((`(find . -name '*.s' -print0 | xargs -0 cat) | wc -l`+`(find . -name '*.s' -print0 | xargs -0 cat) | wc -l`))
-MK_LINES=`(find . -name '*Makefile' -print0 | xargs -0 cat) | wc -l`
+LINES_DIR=.
+if [ -z "$1" ]
+then
+echo "No arguments given, counting lines of code in current directory"
+else
+echo "Counting lines of code in $1"
+LINES_DIR=$1
+fi
+if [ ! -d "$LINES_DIR" ]
+then
+echo "ERROR: \`$LINES_DIR' is not a directory!"
+else
+C_LINES=`(find $LINES_DIR -name '*.c' -print0 | xargs -0 cat ) | wc -l`
+ASM_LINES=`(find $LINES_DIR -name '*.asm' -print0 | xargs -0 cat) | wc -l`
+GAS_LINES=$((`(find $LINES_DIR -name '*.s' -print0 | xargs -0 cat) | wc -l`+`(find . -name '*.s' -print0 | xargs -0 cat) | wc -l`))
+MK_LINES=`(find $LINES_DIR -name '*Makefile' -print0 | xargs -0 cat) | wc -l`
+SH_LINES=`(find $LINES_DIR -name '*.sh' -print0 | xargs -0 cat) | wc -l`
 # Output the result
 echo "$C_LINES lines of C code"
-echo "$ASM_LINES of Assembly code"
-echo "$GAS_LINES of GNU Assembly code"
+echo "$ASM_LINES of Non-AT&T Assembly code"
+echo "$GAS_LINES of AT&T Assembly code"
 echo "$MK_LINES of Makefile code"
-echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES))"
+echo "$SH_LINES of Shell script code"
+echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES+$SH_LINES))"
+fi
+
