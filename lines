@@ -1,0 +1,27 @@
+#!/bin/sh
+# lines: A lightweight but useful line calculator.
+#   Copyright (C) 2017  Travor Liu
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+C_LINES=`(find . -name '*.c' -print0 | xargs -0 cat ) | wc -l`
+ASM_LINES=`(find . -name '*.asm' -print0 | xargs -0 cat) | wc -l`
+GAS_LINES=$((`(find . -name '*.s' -print0 | xargs -0 cat) | wc -l`+`(find . -name '*.s' -print0 | xargs -0 cat) | wc -l`))
+MK_LINES=`(find . -name '*Makefile' -print0 | xargs -0 cat) | wc -l`
+# Output the result
+echo "$C_LINES lines of C code"
+echo "$ASM_LINES of Assembly code"
+echo "$GAS_LINES of GNU Assembly code"
+echo "$MK_LINES of Makefile code"
+echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES))"
