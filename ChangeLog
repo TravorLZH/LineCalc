@@ -1,0 +1,12 @@
+				Change Log
+
+1.1-r1	2017-12-27
+	* Added support for C headers
+
+1.1	2017-12-26
+	* The program will no longer be copied to every project's root folder
+	* You can now type `lines .' to calculate the lines of code in this directory
+	* This program will check if the directory exists and will use current directory if no arguments given
+
+1.0	2017-12-26
+	* Initial Update of this project

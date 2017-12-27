@@ -26,11 +26,11 @@ LINES_DIR=$1
 fi
 if [ ! -d "$LINES_DIR" ]
 then
-echo "ERROR: \`$LINES_DIR' is not a directory!"
+echo "error: \`$LINES_DIR': No such file or directory!"
 else
-C_LINES=`(find $LINES_DIR -name '*.c' -print0 | xargs -0 cat ) | wc -l`
+C_LINES=`(find $LINES_DIR -regex '.*[.][ch]' -print0 | xargs -0 cat ) | wc -l`
 ASM_LINES=`(find $LINES_DIR -name '*.asm' -print0 | xargs -0 cat) | wc -l`
-GAS_LINES=$((`(find $LINES_DIR -name '*.s' -print0 | xargs -0 cat) | wc -l`+`(find . -name '*.s' -print0 | xargs -0 cat) | wc -l`))
+GAS_LINES=`(find $LINES_DIR -regex '.*[.][Ss]' -print0 | xargs -0 cat) | wc -l`
 MK_LINES=`(find $LINES_DIR -name '*Makefile' -print0 | xargs -0 cat) | wc -l`
 SH_LINES=`(find $LINES_DIR -name '*.sh' -print0 | xargs -0 cat) | wc -l`
 # Output the result
