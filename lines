@@ -33,12 +33,20 @@ ASM_LINES=`(find $LINES_DIR -name '*.asm' -print0 | xargs -0 cat) | wc -l`
 GAS_LINES=`(find $LINES_DIR -regex '.*[.][Ss]' -print0 | xargs -0 cat) | wc -l`
 MK_LINES=`(find $LINES_DIR -name '*Makefile' -print0 | xargs -0 cat) | wc -l`
 SH_LINES=`(find $LINES_DIR -name '*.sh' -print0 | xargs -0 cat) | wc -l`
+HTML_LINES=`(find $LINES_DIR -name '*.html' -print0 | xargs -0 cat) | wc -l`
+HTM_LINES=`(find $LINES_DIR -name '*.htm' -print0 | xargs -0 cat) | wc -l`
+HTML_LINES=$(($HTML_LINES+$HTM_LINES))
+JS_LINES=`(find $LINES_DIR -name '*.js' -print0 | xargs -0 cat) | wc -l`
+CSS_LINES=`(find $LINES_DIR -name '*.css' -print0 | xargs -0 cat) | wc -l`
 # Output the result
 echo "$C_LINES lines of C code"
 echo "$ASM_LINES of Non-AT&T Assembly code"
 echo "$GAS_LINES of AT&T Assembly code"
 echo "$MK_LINES of Makefile code"
 echo "$SH_LINES of Shell script code"
-echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES+$SH_LINES))"
+echo "$JS_LINES of JavaScript code"
+echo "$CSS_LINES of CSS code"
+echo "$HTML_LINES of HTML code"
+echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES+$SH_LINES+$HTML_LINES+$JS_LINES+$CSS_LINES))"
 fi
 
