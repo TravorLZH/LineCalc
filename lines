@@ -38,7 +38,7 @@ HTM_LINES=`(find $LINES_DIR -name '*.htm' -print0 | xargs -0 cat) | wc -l`
 HTML_LINES=$(($HTML_LINES+$HTM_LINES))
 JS_LINES=`(find $LINES_DIR -name '*.js' -print0 | xargs -0 cat) | wc -l`
 CSS_LINES=`(find $LINES_DIR -name '*.css' -print0 | xargs -0 cat) | wc -l`
-PYTHONE_LINES=`(find $LINES_DIR -name '*.py' -print0 | xargs -0 cat) | wc -l`
+PYTHON_LINES=`(find $LINES_DIR -name '*.py' -print0 | xargs -0 cat) | wc -l`
 # Output the result
 echo "$C_LINES lines of C code"
 echo "$ASM_LINES of Non-AT&T Assembly code"
@@ -49,6 +49,6 @@ echo "$JS_LINES of JavaScript code"
 echo "$CSS_LINES of CSS code"
 echo "$HTML_LINES of HTML code"
 echo "$PYTHON_LINES of Python code"
-echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES+$SH_LINES+$HTML_LINES+$JS_LINES+$CSS_LINES))"
+echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES+$SH_LINES+$HTML_LINES+$JS_LINES+$CSS_LINES+$PYTHON_LINES))"
 fi
 
