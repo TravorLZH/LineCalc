@@ -48,6 +48,8 @@ CSS_LINES=`(find $LINES_DIR -name '*.css' -print0 | xargs -0 cat) | wc -l`
 echo "$CSS_LINES of CSS code"
 PYTHON_LINES=`(find $LINES_DIR -name '*.py' -print0 | xargs -0 cat) | wc -l`
 echo "$PYTHON_LINES of Python code"
-echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES+$SH_LINES+$HTML_LINES+$JS_LINES+$CSS_LINES+$PYTHON_LINES))"
+TEX_LINES=`(find $LINES_DIR -name '*.tex' -print0 | xargs -0 cat) | wc -l`
+echo "$TEX_LINES of LaTeX code"
+echo "Total $(($C_LINES+$ASM_LINES+$MK_LINES+$GAS_LINES+$SH_LINES+$HTML_LINES+$JS_LINES+$CSS_LINES+$PYTHON_LINES+$TEX_LINES))"
 fi
 
